@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_btn_bg"
+        android:drawableStart="@drawable/main_btn_warning"
+        android:drawableLeft="@drawable/main_btn_warning"
+        android:onClick="openMapsActivity"
+        android:paddingLeft="30dp"
+        android:stateListAnimator="@null"
+        android:text="@string/main_btn_text"
+        android:textColor="#FFF"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBegin"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+    <Button
+        android:id="@+id/button_about"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_btn_bg"
+        android:drawableStart="@drawable/main_i"
+        android:drawableLeft="@drawable/main_btn_warning"
+        android:onClick="openAboutActivity"
+        android:paddingLeft="30dp"
+        android:stateListAnimator="@null"
+        android:text="Over RSR"
+        android:textColor="#FFF"
+        app:layout_constraintTop_toTopOf="@+id/guidelineBottom"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@+id/guidelineBegin" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBegin"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"
+        />
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"
+        />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+</android.support.constraint.ConstraintLayout>
