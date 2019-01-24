@@ -28,7 +28,7 @@ public class MapLayoutManager {
     }
 
     //open close popupWrapper depending on current visibility
-    public void changePopupWrapper(View view){
+    public void changePopupWrapper(){
         if (mActivity.findViewById(R.id.popup_wrapper).getVisibility()==View.GONE){
             popupWrapper.setVisibility(View.VISIBLE);
             callButton.setVisibility(View.GONE);

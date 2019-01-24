@@ -36,7 +36,6 @@ public class MainPresenter implements MainContract.Presenter {
      */
     @Override
     public boolean isTabletScreen(Display display, float density){
-        System.out.println("isTabletScreen called");
         DisplayMetrics outMetrics = new DisplayMetrics ();
         display.getMetrics(outMetrics);
         float dpWidth = outMetrics.widthPixels / density;

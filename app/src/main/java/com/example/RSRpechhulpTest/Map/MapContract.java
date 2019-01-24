@@ -3,6 +3,7 @@ package com.example.RSRpechhulpTest.Map;
 import com.example.RSRpechhulpTest.BasePresenter;
 import com.example.RSRpechhulpTest.BaseView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 
 public interface MapContract {
 
@@ -10,7 +11,13 @@ public interface MapContract {
 
         void initMarker();
 
-        void updateMarker();
+        void updateMarker(LatLng latLng, String address);
+
+        boolean isLocationEnabled();
+
+        boolean isNetworkAvailable();
+
+        void dialNumber();
 
         //alertMessages
 
@@ -19,9 +26,17 @@ public interface MapContract {
 
     interface Presenter extends BasePresenter {
 
+        void requestDial();
+
+        void updateCallPermission();
+
+        void updateLocationPermission();
+
         void requestLocation();
 
         void startLocationUpdates();
+
+        void changePopupWrapper();
 
         //permissions
     }
