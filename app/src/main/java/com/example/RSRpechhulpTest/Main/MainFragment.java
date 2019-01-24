@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.RSRpechhulpTest.AboutPage.AboutPageActivity;
-import com.example.RSRpechhulpTest.MapsActivity;
+import com.example.RSRpechhulpTest.Map.MapsActivity;
 import com.example.RSRpechhulpTest.R;
 
 public class MainFragment extends Fragment implements MainContract.View {

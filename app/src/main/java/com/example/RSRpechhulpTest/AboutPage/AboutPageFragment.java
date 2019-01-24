@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.example.RSRpechhulpTest.R;
 
-import static com.google.android.gms.common.internal.Preconditions.checkNotNull;
 
 public class AboutPageFragment extends Fragment implements AboutPageContract.View {
 

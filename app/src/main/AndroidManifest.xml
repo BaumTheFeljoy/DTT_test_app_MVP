@@ -19,7 +19,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="com.example.RSRpechhulpTest.MapsActivity"
+            android:name="com.example.RSRpechhulpTest.Map.MapsActivity"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_maps"
             android:parentActivityName="com.example.RSRpechhulpTest.Main.MainActivity">

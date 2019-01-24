@@ -1,4 +1,4 @@
-package com.example.RSRpechhulpTest;
+package com.example.RSRpechhulpTest.Map;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -17,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
+import com.example.RSRpechhulpTest.R;
+import com.example.RSRpechhulpTest.utility.ActivityUtils;
 import com.example.RSRpechhulpTest.utility.CustomLocationManager;
 import com.example.RSRpechhulpTest.utility.MapLayoutManager;
 import com.example.RSRpechhulpTest.utility.PermissionManager;
@@ -24,11 +26,13 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 
+import java.util.Map;
+
 /**
  * Keeps track of the devices current location and displays it on a map with address information
  * Can dial number for calling for user pickup
  */
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity {
     //Finals
     private final static int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private final static int PERMISSIONS_REQUEST_CALL = 2;
@@ -50,9 +54,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        /*SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync(this);*/
 
         //Init manager classes
         permissionManager = new PermissionManager(this);
@@ -63,16 +67,24 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        MapFragment mapFragment = (MapFragment) getSupportFragmentManager().findFragmentById(R.id.contentFrame);
+        if (mapFragment == null){
+            mapFragment = MapFragment.newInstance();
+            ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), mapFragment, R.id.contentFrame);
+        }
+
+        new MapPresenter(mapFragment, getApplicationContext());
     }
 
-    @Override
+    /*@Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
 
         //Init CustomLocationManager
         customLocationManager = new CustomLocationManager(this, map);
         customLocationManager.startLocationUpdates();
-    }
+    }*/
 
     @Override
     protected void onResume(){
@@ -85,8 +97,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             if(permissionManager.locationPermissionGranted) {
                 try{//onResume is called before onMapReady at launch.
-                    customLocationManager.getDeviceLocation();
-                    customLocationManager.startLocationUpdates();
+                    //customLocationManager.getDeviceLocation();
+                    //customLocationManager.startLocationUpdates();
                 }catch ( NullPointerException e){
                     Log.e("Exception: %s", e.getMessage());
                 }
