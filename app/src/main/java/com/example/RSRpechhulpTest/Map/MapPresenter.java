@@ -23,12 +23,12 @@ public class MapPresenter implements MapContract.Presenter {
     private OnCompleteListener onCompleteListener;
     private LocationCallback locationCallback;
 
-    public MapPresenter(MapContract.View mapView, Activity activity){
+    public MapPresenter(MapContract.View mapView, Activity mapActivity){
         this.mapView = mapView;  //View
         this.mapView.setPresenter(this);
-        mapActivity = activity;
+        this.mapActivity = mapActivity;
 
-        mapModel = new MapModel(activity);  //Model
+        mapModel = new MapModel(mapActivity);  //Model
 
         onCompleteListener = createOnCompleteListener();
         locationCallback = createLocationCallback();
@@ -82,7 +82,12 @@ public class MapPresenter implements MapContract.Presenter {
         mapLayoutManager.changePopupWrapper();
     }
 
-    private OnCompleteListener createOnCompleteListener(){
+    /**
+     * Creates an OnCompleListener to handle the results of getLocation() in MapModel class
+     * @return
+     */
+    @Override
+    public OnCompleteListener createOnCompleteListener(){
         OnCompleteListener onCompleteListener = new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
@@ -99,7 +104,13 @@ public class MapPresenter implements MapContract.Presenter {
         return onCompleteListener;
     }
 
-    private LocationCallback createLocationCallback(){
+    /**
+     * Creates a LocationCallback to handle locationUpdates from startLocationUpdates() in
+     * MapModel class
+     * @return
+     */
+    @Override
+    public LocationCallback createLocationCallback(){
         final LocationCallback locationCallback =  new LocationCallback() {
             @Override
             public void onLocationResult(LocationResult locationResult) {

@@ -1,38 +1,19 @@
 package com.example.RSRpechhulpTest.Map;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
 import com.example.RSRpechhulpTest.R;
 import com.example.RSRpechhulpTest.utility.ActivityUtils;
-import com.example.RSRpechhulpTest.utility.CustomLocationManager;
-import com.example.RSRpechhulpTest.utility.MapLayoutManager;
-import com.example.RSRpechhulpTest.utility.PermissionManager;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-
-import java.util.Map;
 
 /**
  * Keeps track of the devices current location and displays it on a map with address information
  * Can dial number for calling for user pickup
  */
-public class MapsActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity {
     //Finals
     private final static int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private final static int PERMISSIONS_REQUEST_CALL = 2;

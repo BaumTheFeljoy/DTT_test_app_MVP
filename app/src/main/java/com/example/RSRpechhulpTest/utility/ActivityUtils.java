@@ -9,6 +9,7 @@ import static com.google.android.gms.common.internal.Preconditions.checkNotNull;
 
 /**
  * This provides methods to help Activities load their UI.
+ * source: https://github.com/googlesamples/android-architecture/blob/todo-mvp/todoapp/app/src/main/java/com/example/android/architecture/blueprints/todoapp/util/ActivityUtils.java
  */
 public class ActivityUtils {
 

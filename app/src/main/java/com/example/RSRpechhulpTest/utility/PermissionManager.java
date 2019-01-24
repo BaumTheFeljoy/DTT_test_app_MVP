@@ -33,7 +33,7 @@ public class PermissionManager {
     }
 
     /**
-     * Set permissions according to previous given permissions
+     * Set permissions according to previously given permissions
      */
     public void initPermissions(){
         if(ContextCompat.checkSelfPermission(activity.getBaseContext(), Manifest.permission.CALL_PHONE)

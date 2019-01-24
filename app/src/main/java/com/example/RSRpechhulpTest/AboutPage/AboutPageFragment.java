@@ -33,5 +33,4 @@ public class AboutPageFragment extends Fragment implements AboutPageContract.Vie
         View root = inflater.inflate(R.layout.fragment_about_page, container, false);
         return root;
     }
-
 }

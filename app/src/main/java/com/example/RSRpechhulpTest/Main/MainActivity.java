@@ -15,7 +15,7 @@ import com.example.RSRpechhulpTest.R;
 import com.example.RSRpechhulpTest.utility.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
-    float dpWidth = 0;
+
     private MainPresenter mainPresenter;
 
     @Override

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.RSRpechhulpTest.AboutPage.AboutPageActivity;
-import com.example.RSRpechhulpTest.Map.MapsActivity;
+import com.example.RSRpechhulpTest.Map.MapActivity;
 import com.example.RSRpechhulpTest.R;
 
 public class MainFragment extends Fragment implements MainContract.View {
@@ -19,6 +19,7 @@ public class MainFragment extends Fragment implements MainContract.View {
     private MainContract.Presenter presenter;
 
     public MainFragment(){
+
     }
 
     public static MainFragment newInstance(){
@@ -31,7 +32,6 @@ public class MainFragment extends Fragment implements MainContract.View {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         Button button_about = root.findViewById(R.id.button_about);
         Button button_main = root.findViewById(R.id.button_main);
-
 
         //make sure that it exists because on phone screen the button is in the toolbar, not in the fragment
         if (button_about != null) {
@@ -60,7 +60,7 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     @Override
     public void openMapsActivity() {
-        Intent intent = new Intent(getContext(), MapsActivity.class);
+        Intent intent = new Intent(getContext(), MapActivity.class);
         startActivity(intent);
     }
 

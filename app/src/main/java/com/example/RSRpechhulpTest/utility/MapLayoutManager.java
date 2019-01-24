@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.RSRpechhulpTest.R;
 
 /**
- * Manages the layout changes that can occur in the MapsActivity
+ * Manages the layout changes that can occur in the MapActivity
  */
 public class MapLayoutManager {
     //Layout parts
@@ -27,7 +27,9 @@ public class MapLayoutManager {
         darkenMap = mActivity.findViewById(R.id.darken_map);
     }
 
-    //open close popupWrapper depending on current visibility
+    /**
+     * Open/close popupWrapper depending on current visibility
+     */
     public void changePopupWrapper(){
         if (mActivity.findViewById(R.id.popup_wrapper).getVisibility()==View.GONE){
             popupWrapper.setVisibility(View.VISIBLE);

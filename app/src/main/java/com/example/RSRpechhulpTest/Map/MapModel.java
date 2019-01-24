@@ -27,7 +27,7 @@ public class MapModel {
     private long UPDATE_INTERVAL = 10 * 1000;  /* 10 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 sec */
 
-    private Activity mActivity;
+    private Activity mapActivity;
     public PermissionManager permissionManager;
 
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -37,17 +37,17 @@ public class MapModel {
     public MapModel(Activity activity) {
         permissionManager = new PermissionManager(activity);
 
-        mActivity = activity;
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mActivity);
+        mapActivity = activity;
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(mapActivity);
     }
 
     /**
-     * Gets the most recent available location, saves it if the result is not null
+     * Gets the most recent available location, onCompleteListener has to handle the result
      */
     public void getDeviceLocation(OnCompleteListener onCompleteListener) {
         try {
             Task locationResult = fusedLocationProviderClient.getLastLocation();
-            locationResult.addOnCompleteListener(mActivity, onCompleteListener);
+            locationResult.addOnCompleteListener(mapActivity, onCompleteListener);
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
@@ -76,10 +76,10 @@ public class MapModel {
 
             // Check whether location settings are satisfied
             // https://developers.google.com/android/reference/com/google/android/gms/location/SettingsClient
-            SettingsClient settingsClient = LocationServices.getSettingsClient(mActivity);
+            SettingsClient settingsClient = LocationServices.getSettingsClient(mapActivity);
             settingsClient.checkLocationSettings(locationSettingsRequest);
 
-            if (ActivityCompat.checkSelfPermission(mActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(mapActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
             fusedLocationProviderClient.requestLocationUpdates(mLocationRequest, locationCallback, Looper.myLooper());
@@ -95,8 +95,8 @@ public class MapModel {
     public String getAddress(Location location){
         Geocoder geocoder;
         String address = "default";
-        List<Address> addresses = null;
-        geocoder = new Geocoder(mActivity.getBaseContext(), Locale.getDefault());
+        List<Address> addresses;
+        geocoder = new Geocoder(mapActivity.getBaseContext(), Locale.getDefault());
 
         try {
             addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);

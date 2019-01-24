@@ -2,8 +2,10 @@ package com.example.RSRpechhulpTest.Map;
 
 import com.example.RSRpechhulpTest.BasePresenter;
 import com.example.RSRpechhulpTest.BaseView;
+import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.tasks.OnCompleteListener;
 
 public interface MapContract {
 
@@ -25,6 +27,10 @@ public interface MapContract {
     }
 
     interface Presenter extends BasePresenter {
+
+        OnCompleteListener createOnCompleteListener();
+
+        LocationCallback createLocationCallback();
 
         void requestDial();
 
